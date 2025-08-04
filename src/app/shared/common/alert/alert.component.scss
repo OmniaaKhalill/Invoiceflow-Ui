@@ -1,0 +1,63 @@
+.alert {
+    position: fixed;
+    top: 8px;
+    width: 20vw;
+    left: 48vw;
+    background-color: #4caf4fd3;
+    color: white;
+    padding: 1em 2em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.5s ease, visibility 0s 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+  }
+  
+.red{
+    background-color: red;
+}
+
+.green{
+    background-color:#4caf4fd3 ;
+}
+
+  .show {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease;
+  }
+  
+  .hide {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0s 0.5s;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border: 0.5px solid white;
+    border-radius: 10px;
+    padding: 0.5em;
+    margin-left: 8px;
+  }
+
+
+  @media (min-width: 900px) and (max-width: 1400px) {
+
+  p{
+    font-size: 0.8rem;
+  }
+
+
+  button {
+    font-size: 0.7rem;
+
+  }
+
+
+  }
+  

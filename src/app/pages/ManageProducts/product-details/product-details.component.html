@@ -1,0 +1,90 @@
+<div class="tab-layout">
+    <div class="layout-header">
+
+        <div class="title-wrapper">
+            <div class="breadcrumbs">
+                <div (click)="Back()" class="breadcrumbs-back" id="text">
+                    Cashiers
+                </div>
+<div>  / </div>
+
+                <div class="breadcrumbs-active"> Cashier Details</div>
+
+
+            </div>
+
+            <p class="subtitle-text">Here you can find Cashier details </p>
+          
+    
+        </div>
+
+
+        <div  (click)="Edit(product.productId)" class="  buttons">
+            <div class="  content" >Edit Product</div>
+        </div>
+
+    </div>
+
+
+   
+
+    <section>
+        <div class="product-details">
+            <div class="Description">
+              
+       
+
+            <div>
+                <h5>Name : </h5>
+                <h5 class="info"> {{product.nameEn}}</h5>
+            </div>
+            <div>
+                <h5>Catogory:  </h5>
+                <h5 class="info"> {{ product.categoryName}}</h5>
+            </div>
+            <div>
+                <h5>Price : </h5>
+                <h5 class="info"> {{ product.price}} EGP</h5>
+            </div>
+            <div>
+                <h5>Best seller : </h5>
+                <h5 class="info"> {{product.isBestSeller}}</h5>
+            </div>
+
+            <div>
+                <h5>  Is out of stock : </h5>
+                <h5 class="info"> {{product.isOutOfStock}}</h5>
+            </div>
+            <div>
+                <h5>Rating:  </h5>
+                <h5 class="info"> {{product.rating}}</h5>
+            </div>
+
+            <div>
+                <h5>Description : </h5>
+                <h5 class="info"> {{product.descriptionEn}}</h5>
+            </div>
+
+
+            <div>
+                <h5> Occasions : </h5>
+
+                <h5  *ngFor="let occasion of product.occasions; let divNumber = index"  class="info occasion"> {{occasion.nameEn}} </h5>
+            </div>
+
+
+
+            </div>
+            
+            <div class="sperator"></div>
+            <div class="Occasions">
+
+                <div class="img-card">
+                    <img [src]="baseUrl+product.photoURL" alt="">
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</div>

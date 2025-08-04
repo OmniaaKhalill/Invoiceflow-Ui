@@ -1,0 +1,64 @@
+<div class="tab-layout">
+    <div class="layout-header">
+
+        <div class="title-wrapper">
+            <div class="breadcrumbs">
+                <div (click)="Back()" class="breadcrumbs-back" id="text">
+                   Cashiers
+                </div>
+<div>  / </div>
+                <div class="breadcrumbs-active"> Cashier Details</div>
+
+
+            </div>
+
+            <p class="subtitle-text">Here you can find Cashier details </p>
+          
+    
+        </div>
+
+
+        <div  (click)="Edit(cashier.cashierID)" class="  buttons">
+            <div class="  content" >Edit Product</div>
+        </div>
+
+    </div>
+
+
+   
+
+    <section>
+        <div class="product-details">
+            <div class="Description">
+              
+       
+
+            <div>
+                <h2>Name : </h2>
+                <h2 class="info"> {{cashier.cashierName}}</h2>
+            </div>
+            <div>
+                <h2>Branch:  </h2>
+                <h2 class="info"> {{ cashier.branchName}}</h2>
+            </div>
+            <div>
+                <h2>City : </h2>
+                <h2 class="info"> {{ cashier.cityName}} </h2>
+            </div>
+    
+ 
+
+
+          
+
+
+
+            </div>
+            
+      
+        
+        </div>
+
+    </section>
+
+</div>

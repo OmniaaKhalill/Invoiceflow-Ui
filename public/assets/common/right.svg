@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" id="right">
+  <defs>
+    <linearGradient xlink:href="#a" id="b" x1="25.807" x2="37.413" y1="1150.193" y2="1150.193" gradientTransform="translate(-23.807 -105.61)" gradientUnits="userSpaceOnUse"></linearGradient>
+    <linearGradient id="a">
+      <stop offset="0" stop-color="#8ccc44" stop-opacity="1"></stop>
+      <stop offset="1" stop-color="#5cc450" stop-opacity="1"></stop>
+    </linearGradient>
+  </defs>
+  <path d="M12.585 1040.804a1 1 0 0 0-.615.229l-6.107 4.904-2.063-2.752a1 1 0 1 0-1.6 1.201l2.682 3.576a1 1 0 0 0 1.426.18l6.914-5.55a1 1 0 0 0-.637-1.788z" style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;white-space:normal;isolation:auto;mix-blend-mode:normal;solid-color:#000;solid-opacity:1" transform="translate(0 -1036.362)" color="#000" font-style="normal" font-variant="normal" font-weight="400" font-stretch="normal" font-size="medium" font-family="sans-serif" text-decoration="none" letter-spacing="normal" word-spacing="normal" direction="ltr" writing-mode="lr-tb" baseline-shift="baseline" text-anchor="start" clip-rule="nonzero" display="inline" overflow="visible" visibility="visible" opacity="1" color-interpolation="sRGB" color-interpolation-filters="linearRGB" fill="url(#b)" fill-opacity="1" fill-rule="evenodd" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dasharray="none" stroke-dashoffset="0" stroke-opacity="1" color-rendering="auto" image-rendering="auto" shape-rendering="auto" text-rendering="auto" enable-background="accumulate"></path>
+</svg>

@@ -1,0 +1,116 @@
+<div class="tab-layout">
+    <div class="layout-header">
+        <div class="title-wrapper">
+            <div class="title-text">Manage Products </div>
+            <p class="subtitle-text">Here you can find a list of Products</p>
+        </div>
+
+     
+            <div class="search-wrapper">
+                <input type="text" class="search-input" placeholder="Search" [(ngModel)]="searchText" (keyup)="reset()">
+                <img  (click)="search()"  class="search-button pointer" src="../../../../assets/common/search.svg" alt="">
+          
+        
+            </div>
+  
+  
+     
+        <div  (click)="Add()" class="  buttons">
+          <div class="  content"  >Add Product</div>
+        </div>
+        
+    </div>
+    <div class="layout-table">
+        <div class="table-head">
+          <div class="table-col-l"><div class="t-head-text">Name</div></div>
+          <div class="table-col-l"><div class="t-head-text">Category</div></div>
+          <div class="table-col-l"><div class="t-head-text">Price</div></div>
+          <div class="table-col-l"><div class="t-head-text">Out Of Stock</div></div>
+          <div class="table-col-m"><div class="t-head-text">Rating</div></div>
+          <div class="table-col-l"><div class="t-head-text">Date</div></div>
+          <div class="table-col-l"><div class="t-head-text">Actions</div></div>
+        </div>
+
+        <app-loader *ngIf="isLoading"></app-loader>
+
+        <app-no-search-match *ngIf="noMatchFound" ></app-no-search-match>
+        <div class="table" *ngIf="!isLoading">
+  
+
+          <div *ngFor="let entity of entities; let divNumber = index" [ngClass]="{'table-row-even':divNumber%2==0, 'table-row-odd':divNumber%2!=0}">
+            <div class="table-col-l">
+              <div class="t-row-text" title="{{entity.nameEn}}">{{entity.nameEn}}</div>
+            </div>
+            <div class="table-col-l">
+              <div class="t-row-text" title="{{entity.category}}">{{entity.category}}</div>
+            </div>
+            <div class="table-col-l">
+              <div class="t-row-text" title="{{entity.price}}">{{entity.price}}</div>
+            </div>
+            <div class="table-col-l">
+              <img class="icon" [src]="entity.isOutOfStock ? '../../../../assets/common/right.svg' : '../../../../assets/common/wrong.svg'" alt="Stock Status">
+            </div>
+            <div class="table-col-m">
+              <div class="t-row-text" title="{{entity.rating}}">{{entity.rating}}</div>
+            </div>
+            <div class="table-col-l">
+              <div class="t-row-text" title="{{entity.date | date:'short'}}">{{entity.date | date:'short'}}</div>
+            </div>
+            <div class="table-col-l">
+              <img (click)="Details(entity.productId)" class="icon pointer" src="../../../../assets/common/info.svg" alt="">
+              <img class="icon pointer" (click)="Edit(entity.productId)" src="../../../../assets/common/edit-05.svg" alt="">
+              <img (click)="showConfirmPopup(entity.productId)" class="icon pointer" src="../../../../assets/common/trash-03.svg" alt="">
+            </div>
+          </div>
+          
+          
+
+      </div>
+    </div>
+ 
+
+
+    <div class="pagination">
+
+        <div (click)=" More(clicked-1==-1? 0: clicked-1)" class="arrow pointer">
+            <img class="arrow-icon" src="../../../../assets/common/lift arrow.svg" />
+        </div>
+
+
+        <div class="pages-nums">
+        
+          <div  *ngFor="let page of pagesCount; let pageNum = index" (click)=" More(pageNum)" class="arrow pointer" [ngClass]="{'Page-active': pageNum==clicked ? true: false}"><div class="pagination-text">{{pageNum+1}}</div></div>
+          <div class="pagination-text"> . . . . . . . </div>
+        </div>
+
+
+        <div  (click)=" More(clicked+1 > (pagesCount.length-1) ? pagesCount.length-1: clicked+1 )" class="arrow pointer"><img class="arrow-icon" src="../../../../assets/common/Rarrow.svg" /></div>
+
+        <div class="last-page-wrapper pointer">
+          <div   (click)=" More(pagesCount.length-1)" class="last-page">
+
+            <div class="pagination-text">Jump to page </div>
+
+            <img class="arrow-icon" src="../../../../assets/common/upArrow.svg" alt="" />
+
+          </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="delete-popup" *ngIf="showPopup">
+  <div class="confirm-card">
+  <p>Are you sure you want to delete this Product?</p>
+<div class=" action-btns">
+  <div (click)="cancelDelete()" class="buttons   btn-cancel ">
+    No
+  </div>
+  <button  class="buttons btn-confirm" (click)="confirmDelete()">
+  Yes
+  </button>
+</div>
+</div>

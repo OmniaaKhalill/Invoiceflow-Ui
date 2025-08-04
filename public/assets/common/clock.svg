@@ -1,0 +1,10 @@
+<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="clock" clip-path="url(#clip0_751_14272)">
+<path id="Icon" d="M12.8571 6.57153V12.5715L16.8571 14.5715M22.8571 12.5715C22.8571 18.0944 18.38 22.5715 12.8571 22.5715C7.33427 22.5715 2.85712 18.0944 2.85712 12.5715C2.85712 7.04869 7.33427 2.57153 12.8571 2.57153C18.38 2.57153 22.8571 7.04869 22.8571 12.5715Z" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_751_14272">
+<rect width="24" height="24" fill="white" transform="translate(0.857117 0.571533)"/>
+</clipPath>
+</defs>
+</svg>

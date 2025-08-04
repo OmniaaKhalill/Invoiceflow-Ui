@@ -1,0 +1,46 @@
+.loader-bg{
+    width: 77vw;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(128, 128, 128, 0.297);
+}
+
+
+
+.loader {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: block;
+    margin:16px auto;
+    position: relative;
+    background: #FFF;
+    box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+    box-sizing: border-box;
+    animation: shadowPulse 2s linear infinite;
+  }
+  
+  @keyframes shadowPulse {
+    33% {
+      background: #FFF;
+      box-shadow: -24px 0 #3C2716, 24px 0 #FFF;
+    }
+    66% {
+      background: #3C2716;
+      box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+    }
+    100% {
+      background: #FFF;
+      box-shadow: -24px 0 #FFF, 24px 0 #3C2716;
+    }
+  }
+
+  
+@media (min-width: 900px) and (max-width: 1400px) {
+
+.loader {
+    width: 15px;
+    height: 15px;
+}}

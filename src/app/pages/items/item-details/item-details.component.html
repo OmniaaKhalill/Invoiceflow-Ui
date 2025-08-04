@@ -1,0 +1,64 @@
+<div class="tab-layout">
+    <div class="layout-header">
+
+        <div class="title-wrapper">
+            <div class="breadcrumbs">
+                <div (click)="Back()" class="breadcrumbs-back" id="text">
+                   Items
+                </div>
+<div>  / </div>
+                <div class="breadcrumbs-active"> Item Details</div>
+
+
+            </div>
+
+            <p class="subtitle-text">Here you can find Item details </p>
+          
+    
+        </div>
+
+
+        <div  (click)="Edit(Item.itemID)" class="  buttons">
+            <div class="  content" >Edit Item</div>
+        </div>
+
+    </div>
+
+
+   
+
+    <section>
+        <div class="product-details">
+            <div class="Description">
+              
+       
+
+            <div>
+                <h2>Name : </h2>
+                <h2 class="info"> {{Item.itemID}}</h2>
+            </div>
+            <div>
+                <h2>Branch:  </h2>
+                <h2 class="info"> {{ Item.name}}</h2>
+            </div>
+            <div>
+                <h2>City : </h2>
+                <h2 class="info"> {{ Item.price}} </h2>
+            </div>
+    
+ 
+
+
+          
+
+
+
+            </div>
+            
+      
+        
+        </div>
+
+    </section>
+
+</div>
