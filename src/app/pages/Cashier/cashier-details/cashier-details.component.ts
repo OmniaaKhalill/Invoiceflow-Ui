@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CashierDtails } from '../../../core/models/Cashier/Cashier';
 import { CashierService } from '../../../core/services/Cashier/cashier.service';
-import { SharedService } from '../../../core/services/Shared/shared.service';
 
 @Component({
   selector: 'app-cashier-details',
@@ -18,7 +17,6 @@ export class CashierDetailsComponent {
     constructor(
       private router: Router,
       private cashierService: CashierService,
-      private sharedService:SharedService 
     ) {}
   
     ngOnInit(): void {

@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { CashierDtails, CashierForUpdate } from '../../../core/models/Cashier/Cashier';
 import { Router } from '@angular/router';
 import { CashierService } from '../../../core/services/Cashier/cashier.service';
-import { SharedService } from '../../../core/services/Shared/shared.service';
 import { BranchService } from '../../../core/services/Branch/branch.service';
 import { Branch } from '../../../core/models/Branch/branch';
 
@@ -22,7 +21,6 @@ cashier!: CashierForUpdate;
   constructor(
     private router: Router,
     private cashierService: CashierService,
-    private sharedService:SharedService ,
         private branchservice: BranchService
   ) {}
 
@@ -61,15 +59,13 @@ console.log(this.cashier)
  
      this.cashierService.update(this.cashier,this.cashier.id).subscribe(data => {
 
-      this.sharedService.alertnMessage(" cashier has been updated successfully ")
-     this.sharedService.alertColor('green')
+  
    this.router.navigate(['/Cashiers']).then(() => {
     
    });
     }, error => {
       console.error('Error: ', error);
-        this.sharedService.alertnMessage(" Something went wrong ")
-      this.sharedService.alertColor('red')
+    
     });
  
   }

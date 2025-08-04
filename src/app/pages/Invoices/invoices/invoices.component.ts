@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Invoice } from '../../../core/models/Invoice/invoice';
 import { InvoiceService } from '../../../core/services/Invoice/invoice.service';
 import { Router } from '@angular/router';
-import { SharedService } from '../../../core/services/Shared/shared.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LoaderComponent } from '../../../shared/common/loader/loader.component';
@@ -15,9 +14,7 @@ import { LoaderComponent } from '../../../shared/common/loader/loader.component'
   styleUrl: './invoices.component.css'
 })
 export class InvoicesComponent {
-clicked!:number
-  pageSize=10
-  pagesCount!:Array<number>
+
   entities!:Invoice[]
   showPopup = false;
   entityIdToDelete: number | null = null;
@@ -28,7 +25,7 @@ clicked!:number
   
 txt=''
  
-    constructor(private InvoiceService:InvoiceService, private router:Router,private sharedService:SharedService ){
+    constructor(private InvoiceService:InvoiceService, private router:Router){
 
   }
   searchText = '';
@@ -36,7 +33,7 @@ noMatchFound=false
   search() { 
 
 
-    this.clicked=0
+
     this.InvoiceService.GetAll().subscribe(data=>{
 
      this.entities=data
@@ -63,7 +60,7 @@ noMatchFound=false
 
   ngOnInit(): void {
 
-    this.clicked=0
+ 
     this.InvoiceService.GetAll().subscribe(data=>{
       this.noMatchFound=false
      this.entities=data
@@ -76,7 +73,6 @@ noMatchFound=false
      }, 500);
   
  
-     this.pagesCount= new Array(Math.ceil((count/this.pageSize)));
     },
     error => {
       // { this..isError(true)
@@ -117,13 +113,11 @@ Add(){
       this.InvoiceService.Delete(this.entityIdToDelete).subscribe(data => {
   
         this.showPopup = false;
-        this.sharedService.alertnMessage("Deleted successfully ")
-        this.sharedService.alertColor('green')
+
  this.ngOnInit()
   
        }, error => {
-        this.sharedService.alertnMessage(" Something went wrong ")
-          this.sharedService.alertColor('red')
+    
          console.error('Error: ', error);
        });
     }

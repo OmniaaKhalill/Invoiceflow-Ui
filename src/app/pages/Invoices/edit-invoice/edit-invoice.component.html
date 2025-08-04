@@ -1,1 +1,101 @@
-<p>edit-invoice works!</p>
+<div class="tab-layout">
+    <div class="layout-header">
+
+        <div class="title-wrapper">
+            <div class="breadcrumbs">
+                <div (click)="Back()" class="breadcrumbs-back" id="text">
+                    Invoices
+                </div>
+
+                <div> / </div>
+                <div class="breadcrumbs-active">Edit Invoice</div>
+            </div>
+
+
+            <p class="subtitle-text">Here you can Edit a Invoice</p>
+        </div>
+    </div>
+
+   <form #editForm="ngForm" (ngSubmit)="submit()">
+  <div class="form-layout">
+    <div class="form">
+
+      <!-- Customer Name -->
+      <div class="form-row">
+        <div class="form-input">
+          <label class="input-label">Customer Name</label>
+          <input type="text" [(ngModel)]="invoice.customerName" name="customerName" required />
+        </div>
+      </div>
+
+      <!-- Branch -->
+      <div class="form-row">
+        <div class="form-input">
+          <label class="input-label">Select Branch</label>
+          <select [(ngModel)]="invoice.branchID" name="branchID" required (change)="onBranchChange(invoice.branchID)">
+            <option value="" disabled>Select Branch</option>
+            <option *ngFor="let branch of branches" [value]="branch.id">
+              {{ branch.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Cashier -->
+      <div class="form-row">
+        <div class="form-input">
+          <label class="input-label">Select Cashier</label>
+          <select [(ngModel)]="invoice.cashierID" name="cashierID" required>
+            <option value="" disabled>Select Cashier</option>
+            <option *ngFor="let cashier of cashiers" [value]="cashier.id">
+              {{ cashier.cashierName }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Items -->
+      <div class="form-row" *ngFor="let item of invoice.items; let i = index">
+        <div class="form-input">
+          <label class="input-label">Select Item</label>
+          <select [(ngModel)]="invoice.items[i].itemID" name="itemID{{i}}" required>
+            <option value="" disabled>Select Item</option>
+            <option *ngFor="let option of items" [value]="option.id">
+              {{ option.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-input-counter">
+          <label>Count</label>
+          <input type="number" [(ngModel)]="invoice.items[i].itemCount" name="itemCount{{i}}" required />
+        </div>
+
+        <button type="button" (click)="removeItem(i)" *ngIf="invoice.items.length > 1">Remove</button>
+      </div>
+
+      <!-- Add item -->
+      <div class="form-row">
+        <button type="button" (click)="addItem()">Add Another Item</button>
+      </div>
+    </div>
+
+    <!-- Submit and Reset -->
+    <div class="action-btns">
+      <div (click)="Reset()" class="buttons btn-reset">
+        <div class="content">Reset</div>
+      </div>
+      <button class="buttons btn-confirm" [disabled]="editForm.invalid">
+        <div class="content">Update Invoice</div>
+      </button>
+    </div>
+  </div>
+</form>
+
+
+
+
+
+
+
+</div>

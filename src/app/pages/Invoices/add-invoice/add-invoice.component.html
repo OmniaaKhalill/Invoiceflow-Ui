@@ -4,21 +4,23 @@
         <div class="title-wrapper">
             <div class="breadcrumbs">
                 <div (click)="Back()" class="breadcrumbs-back" id="text">
-                    Cashiers
+                    Invoice
                 </div>
 
                 <div> / </div>
-                <div class="breadcrumbs-active">Add Cashiers</div>
+                <div class="breadcrumbs-active">Add Invoice</div>
             </div>
 
 
-            <p class="subtitle-text">Here you can add a Cashier</p>
+            <p class="subtitle-text">Here you can add a Invoice</p>
         </div>
     </div>
 
     <form #profileForm="ngForm" (ngSubmit)="Add()">
         <div class="form-layout">
             <div class="form">
+
+
                 <!-- Customer Name -->
                 <div class="form-row">
                     <div class="form-input">
@@ -26,29 +28,75 @@
                         <input type="text" id="customerName" [(ngModel)]="invoice.customerName" name="customerName"
                             required />
                     </div>
-                      <div class="form-input">
-                        <label for="cashierID" class="input-label">Cashier ID</label>
-                        <input type="number" id="cashierID" [(ngModel)]="invoice.cashierID" name="cashierID" required />
+
+                </div>
+                <div class="form-row">
+
+                    <div class="form-input">
+                        <label for="BranchId" class="input-label">Select Branch</label>
+                        <select id="BranchId" [(ngModel)]="invoice.branchID" (change)="onBranchChange(invoice.branchID)" name="BranchId" required
+                            #BranchId="ngModel">
+                            <option value="" disabled selected>Select Branch</option>
+                            <option *ngFor="let Branch of branches" [value]="Branch.id">
+                                {{ Branch.name }}
+                            </option>
+
+
+                        </select>
+
+                        <div class="error">
+                            <div *ngIf="BranchId.invalid && BranchId.touched" class="error-message">
+                                Branch is required
+                            </div>
+                        </div>
                     </div>
+
+
                 </div>
 
                 <!-- Cashier ID -->
                 <div class="form-row">
-                       <div class="form-input">
-                        <label for="branchID" class="input-label">Branch ID</label>
-                        <input type="number" id="branchID" [(ngModel)]="invoice.branchID" name="branchID" required />
+                    <div class="form-input">
+                        <label for="cashierID" class="input-label">Select Cashier</label>
+                        <select id="cashierID" [(ngModel)]="invoice.cashierID" name="cashierID" required
+                            #cashierID="ngModel">
+                            <option value="" disabled selected>Select Cashier</option>
+                            <option *ngFor="let Cashier of cashiers" [value]="Cashier.id">
+                                {{ Cashier.cashierName }}
+                            </option>
+
+
+                        </select>
+
+                        <div class="error">
+                            <div *ngIf="cashierID.invalid && cashierID.touched" class="error-message">
+                                cashier is required
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Branch ID -->
-            
+
 
                 <!-- Items -->
-                <div class="form-row" *ngFor="let item of itemsList; let i = index">
+
+                <div class="form-row " *ngFor="let item of itemsList; let i = index">
                     <div class="form-input">
-                        <label>Item ID</label>
-                        <input type="number" [(ngModel)]="item.itemID" name="itemID{{i}}" required />
+                        <label for="BranchId" class="input-label">Select Item</label>
+                        <select id="BranchId" [(ngModel)]="invoice.items[i].itemID" name="BranchId" required
+                            #BranchId="ngModel">
+                            <option value="" disabled selected>Select Item</option>
+                            <option *ngFor="let item of items" [value]="item.id">
+                                {{ item.name }}
+                            </option>
+
+
+                        </select>
+
+                
                     </div>
+
 
                     <div class="form-input-counter">
                         <label> Count</label>
@@ -67,18 +115,18 @@
 
 
                 <!-- Submit Button -->
-          
+
 
             </div>
 
-                  <div class="action-btns">
-                    <div (click)="Reset()" class="buttons   btn-reset">
-                        <div class="  content">Reset</div>
-                    </div>
-                    <button class="buttons btn-confirm" [disabled]="profileForm.invalid">
-                        <div class="content">Add Invoice</div>
-                    </button>
+            <div class="action-btns">
+                <div (click)="Reset()" class="buttons   btn-reset">
+                    <div class="  content">Reset</div>
                 </div>
+                <button class="buttons btn-confirm" [disabled]="profileForm.invalid">
+                    <div class="content">Add Invoice</div>
+                </button>
+            </div>
         </div>
 
     </form>
@@ -89,7 +137,3 @@
 
 
 </div>
-
-
-
-

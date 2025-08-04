@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CashierForCreate } from '../../../core/models/Cashier/Cashier';
 import { Router } from '@angular/router';
-import { SharedService } from '../../../core/services/Shared/shared.service';
 import { CashierService } from '../../../core/services/Cashier/cashier.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -30,7 +29,6 @@ export class AddCashierComponent {
   constructor(
     private router: Router,
     private cashierService: CashierService,
-    private sharedService:SharedService ,
     private branchservice: BranchService
   ) {}
 
@@ -57,15 +55,13 @@ console.log(this.cashier)
  
      this.cashierService.Create(this.cashier).subscribe(data => {
 
-      this.sharedService.alertnMessage(" cashier has been Ceated successfully ")
-     this.sharedService.alertColor('green')
+
    this.router.navigate(['/Cashiers']).then(() => {
     
    });
     }, error => {
       console.error('Error: ', error);
-        this.sharedService.alertnMessage(" Something went wrong ")
-      this.sharedService.alertColor('red')
+  
     });
  
   }

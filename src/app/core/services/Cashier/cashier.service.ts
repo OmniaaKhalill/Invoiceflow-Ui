@@ -38,16 +38,20 @@ export class CashierService {
     
   
   
-    Create(item:CashierForCreate){
+    Create(item:CashierForCreate) : Observable<any> {
       return this.http.post<any>(this.baseUrl+"/api/Cashiers",item)
     }
   
   
-    update(item:CashierForUpdate,id:number){
+    update(item:CashierForUpdate,id:number) : Observable<any>  {
       return this.http.put<any>(this.baseUrl+"/api/Cashiers/"+id,item)
     }
   
 
+    getCashiersByBranch(branchId: number):  Observable<any>  {
+   
+      return this.http.get<any>(`${this.baseUrl}/api/Cashiers/GetCashiersByBranch/${branchId}`);
+    }
   
   
   

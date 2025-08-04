@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ItemForCreate } from '../../../core/models/Item/item';
 import { Router } from '@angular/router';
 import { ItemService } from '../../../core/services/Item/item.service';
-import { SharedService } from '../../../core/services/Shared/shared.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -28,7 +27,7 @@ Item!: ItemForCreate;
   constructor(
     private router: Router,
     private ItemService: ItemService,
-    private sharedService:SharedService ,
+   
 
   ) {}
 
@@ -48,15 +47,13 @@ console.log(this.Item)
  
      this.ItemService.Create(this.Item).subscribe(data => {
 
-      this.sharedService.alertnMessage(" Item has been Ceated successfully ")
-     this.sharedService.alertColor('green')
+
    this.router.navigate(['/Items']).then(() => {
     
    });
     }, error => {
       console.error('Error: ', error);
-        this.sharedService.alertnMessage(" Something went wrong ")
-      this.sharedService.alertColor('red')
+
     });
  
   }

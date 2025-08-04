@@ -1,102 +1,100 @@
 import { Component } from '@angular/core';
-import { InvoiceForCreate, Item } from '../../../core/models/Invoice/invoice';
+import { InvoiceForCreate, ItemForInvoice } from '../../../core/models/Invoice/invoice';
 import { Router } from '@angular/router';
 import { ItemService } from '../../../core/services/Item/item.service';
 import { InvoiceService } from '../../../core/services/Invoice/invoice.service';
-import { SharedService } from '../../../core/services/Shared/shared.service';
 import { BranchService } from '../../../core/services/Branch/branch.service';
 import { CashierService } from '../../../core/services/Cashier/cashier.service';
 import { Cashier } from '../../../core/models/Cashier/Cashier';
 import { Branch } from '../../../core/models/Branch/branch';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Item } from '../../../core/models/Item/item';
 
 @Component({
   selector: 'app-add-invoice',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './add-invoice.component.html',
-  styleUrl: './add-invoice.component.css'
+  styleUrl: './add-invoice.component.css',
 })
 export class AddInvoiceComponent {
-cashier!: Cashier;
- branches!:Branch[]
- 
-  itemsList: Item[] = [new Item(0,0)];
-  invoice: InvoiceForCreate = new InvoiceForCreate("",0,0,this.itemsList);
+  cashiers!: Cashier[];
+  branches!: Branch[];
+    items!: Item[];
+
+  itemsList: ItemForInvoice[] = [new ItemForInvoice(0, 0)];
+  invoice: InvoiceForCreate = new InvoiceForCreate('', 0, 0, this.itemsList);
 
   constructor(
     private router: Router,
     private invoiceService: InvoiceService,
-    private sharedService:SharedService ,
+
     private ItemService: ItemService,
     private cashierService: CashierService,
-        private branchservice: BranchService
-
-      
+    private branchservice: BranchService
   ) {}
 
   ngOnInit(): void {
-
-// based on branch the cashiers appears
-      this.branchservice.GetAll().subscribe(data => {
-        console.log(data)
+    // based on branch the cashiers appears
+    this.branchservice.GetAll().subscribe(
+      (data) => {
+        console.log(data);
         this.branches = data;
-  
-  
-      }, error => {
+      },
+      (error) => {
         console.error('Error: ', error);
-      });
+      }
+    );
 
 
 
 
+
+   this.ItemService.GetAll().subscribe(
+      (data) => {
+      this.items = data;
+      console.log(data);
+   
+
+      
+
+      },
+      (error) => {
+   
+        console.error('Error: ', error);
+      }
+    );
 
   }
-
-
-  
 
   Add(): void {
-console.log(this.cashier)
+    this.invoiceService.Create(this.invoice).subscribe(
+      (data) => {
+  
+  
+      },
+      (error) => {
+        console.error('Error: ', error);
 
- 
-     this.invoiceService.Create(this.invoice).subscribe(data => {
-
-      this.sharedService.alertnMessage(" Invoice has been Ceated successfully ")
-     this.sharedService.alertColor('green')
-   this.router.navigate(['/Invoices']).then(() => {
-    
-   });
-    }, error => {
-      console.error('Error: ', error);
-        this.sharedService.alertnMessage(" Something went wrong ")
-      this.sharedService.alertColor('red')
-    });
- 
+      }
+    );
   }
 
-
   Reset(): void {
- 
-  const currentUrl = this.router.url;
-  this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate([currentUrl]);
-  });
-
+    });
   }
 
   Back(): void {
-    this.router.navigateByUrl("Invoices");
+    this.router.navigateByUrl('Invoices');
   }
-
-
-
-
 
   // Add a new item row
   addItem() {
-    this.itemsList.push(new Item(0,0));
+    this.itemsList.push(new ItemForInvoice(0, 0));
   }
 
   // Remove item by index
@@ -104,15 +102,28 @@ console.log(this.cashier)
     this.itemsList.splice(index, 1);
   }
 
-  // Submit invoice
-  // Add() {
-  //   this.invoice.items = this.itemsList;
+onBranchChange(branchId: number) {
+  if (branchId) {
+    this.fetchCashiersByBranch(branchId);
+  } else {
+    this.cashiers = [];
+  }
+}
 
-  //   // Call service to send invoice to backend
-  //   console.log(this.invoice);
+fetchCashiersByBranch(branchId: number) {
 
-  //   // Reset if needed
-  //   // this.invoice = new Invoice();
-  //   // this.itemsList = [new InvoiceItem()];
-  // }
+    this.cashierService.getCashiersByBranch(branchId).subscribe(
+      (data) => {
+        this.cashiers = data;
+
+        console.log(data);
+        let count = data;
+      },
+      (error) => {
+        console.error('Error: ', error);
+      }
+    );
+}
+
+
 }

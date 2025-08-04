@@ -36,12 +36,7 @@ export class InvoiceDtails {
   ) {}
 }
 
-export class InvoiceForUpdate {
-  constructor(
 
-  
-
-  ){}}
 
 
   export class InvoiceForCreate {
@@ -49,15 +44,29 @@ export class InvoiceForUpdate {
   
 
   constructor(
+
     public customerName: string,
     public cashierID: number,
     public branchID: number,
-    public items: Item[]
+    public items: ItemForInvoice[]
   ) {}}
 
 
+  export class InvoiceForUpdate {
 
- export  class Item {
+  
+
+  constructor(
+        public id: number,
+
+    public customerName: string,
+    public cashierID: number,
+    public branchID: number,
+    public items: ItemForInvoice[]
+  ) {}}
+
+
+ export  class ItemForInvoice {
 
 constructor(
      public itemID: number,

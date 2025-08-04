@@ -2,24 +2,20 @@ import { Component } from '@angular/core';
 import { Cashier } from '../../../core/models/Cashier/Cashier';
 import { CashierService } from '../../../core/services/Cashier/cashier.service';
 import { Router } from '@angular/router';
-import { SharedService } from '../../../core/services/Shared/shared.service';
 import { LoaderComponent } from '../../../shared/common/loader/loader.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NoSearchMatchComponent } from '../../../shared/common/no-search-match/no-search-match.component';
 
 @Component({
   selector: 'app-cashiers',
   standalone: true,
-  imports: [LoaderComponent, CommonModule,FormsModule,NoSearchMatchComponent],
+  imports: [LoaderComponent, CommonModule,FormsModule],
   templateUrl: './cashiers.component.html',
   styleUrl: './cashiers.component.css'
 })
 export class CashiersComponent {
 
-clicked!:number
-  pageSize=10
-  pagesCount!:Array<number>
+
   entities!:Cashier[]
   showPopup = false;
   entityIdToDelete: number | null = null;
@@ -30,7 +26,7 @@ clicked!:number
   
 txt=''
  
-    constructor(private cashierService:CashierService, private router:Router,private sharedService:SharedService ){
+    constructor(private cashierService:CashierService, private router:Router ){
 
   }
   searchText = '';
@@ -38,7 +34,6 @@ noMatchFound=false
   search() { 
 
 
-    this.clicked=0
     this.cashierService.GetAll().subscribe(data=>{
 
      this.entities=data
@@ -65,7 +60,7 @@ noMatchFound=false
 
   ngOnInit(): void {
 
-    this.clicked=0
+    
     this.cashierService.GetAll().subscribe(data=>{
       this.noMatchFound=false
      this.entities=data
@@ -78,7 +73,6 @@ noMatchFound=false
      }, 500);
   
  
-     this.pagesCount= new Array(Math.ceil((count/this.pageSize)));
     },
     error => {
       // { this..isError(true)
@@ -119,13 +113,11 @@ Add(){
       this.cashierService.Delete(this.entityIdToDelete).subscribe(data => {
   
         this.showPopup = false;
-        this.sharedService.alertnMessage("Deleted successfully ")
-        this.sharedService.alertColor('green')
+    
  this.ngOnInit()
   
        }, error => {
-        this.sharedService.alertnMessage(" Something went wrong ")
-          this.sharedService.alertColor('red')
+      
          console.error('Error: ', error);
        });
     }

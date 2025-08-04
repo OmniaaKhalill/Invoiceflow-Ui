@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SharedService } from '../../../core/services/Shared/shared.service';
 import { InvoiceService } from '../../../core/services/Invoice/invoice.service';
 import { InvoiceDtails } from '../../../core/models/Invoice/invoice';
 import { CommonModule } from '@angular/common';
@@ -19,7 +18,6 @@ invoice!: InvoiceDtails;
     constructor(
       private router: Router,
       private InvoiceService: InvoiceService,
-      private sharedService:SharedService 
     ) {}
   
     ngOnInit(): void {

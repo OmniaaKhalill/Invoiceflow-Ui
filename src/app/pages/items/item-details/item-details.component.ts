@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Item } from '../../../core/models/Item/item';
 import { Router } from '@angular/router';
-import { SharedService } from '../../../core/services/Shared/shared.service';
 import { ItemService } from '../../../core/services/Item/item.service';
 
 @Component({
@@ -18,7 +17,6 @@ export class ItemDetailsComponent {
       constructor(
         private router: Router,
         private ItemService: ItemService,
-        private sharedService:SharedService 
       ) {}
     
       ngOnInit(): void {
