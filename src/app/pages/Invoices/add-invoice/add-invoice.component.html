@@ -98,10 +98,22 @@
                     </div>
 
 
-                    <div class="form-input-counter">
-                        <label> Count</label>
-                        <input type="number" [(ngModel)]="item.itemCount" name="itemCount{{i}}" required />
-                    </div>
+        <div class="form-input-counter">
+  <label>Count</label>
+  <input
+    type="number"
+    [(ngModel)]="item.itemCount"
+    name="itemCount{{i}}"
+    required
+    min="1"
+    #count="ngModel"
+  />
+</div>
+
+<div *ngIf="count.value == 0 && count.touched" class="error-message">
+  Item count can't be 0
+</div>
+
 
                     <button type="button" (click)="removeItem(i)" *ngIf="itemsList.length > 1">Remove</button>
                 </div>
