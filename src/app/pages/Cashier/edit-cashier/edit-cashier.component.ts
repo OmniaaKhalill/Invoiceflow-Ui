@@ -5,6 +5,8 @@ import { CashierDtails, CashierForUpdate } from '../../../core/models/Cashier/Ca
 import { Router } from '@angular/router';
 import { CashierService } from '../../../core/services/Cashier/cashier.service';
 import { SharedService } from '../../../core/services/Shared/shared.service';
+import { BranchService } from '../../../core/services/Branch/branch.service';
+import { Branch } from '../../../core/models/Branch/branch';
 
 @Component({
   selector: 'app-edit-cashier',
@@ -16,14 +18,26 @@ import { SharedService } from '../../../core/services/Shared/shared.service';
 export class EditCashierComponent {
 
 cashier!: CashierForUpdate;
-
+ branches!:Branch[]
   constructor(
     private router: Router,
     private cashierService: CashierService,
-    private sharedService:SharedService 
+    private sharedService:SharedService ,
+        private branchservice: BranchService
   ) {}
 
   ngOnInit(): void {
+
+    
+       
+          this.branchservice.GetAll().subscribe(data => {
+            console.log(data)
+            this.branches = data;
+      
+      
+          }, error => {
+            console.error('Error: ', error);
+          });
 
     const id = localStorage.getItem("cashierID") ?? '';
     this.cashierService.getItemDetails(Number(id)).subscribe(data => {
@@ -45,7 +59,7 @@ cashier!: CashierForUpdate;
 console.log(this.cashier)
 
  
-     this.cashierService.Create(this.cashier).subscribe(data => {
+     this.cashierService.update(this.cashier,this.cashier.id).subscribe(data => {
 
       this.sharedService.alertnMessage(" cashier has been updated successfully ")
      this.sharedService.alertColor('green')

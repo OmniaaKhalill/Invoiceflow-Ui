@@ -1,0 +1,67 @@
+<div class="tab-layout">
+  <div class="layout-header">
+    <div class="title-wrapper">
+      <div class="breadcrumbs">
+        <div (click)="Back()" class="breadcrumbs-back" id="text">Invoices</div>
+        <div>/</div>
+        <div class="breadcrumbs-active">Invoice Details</div>
+      </div>
+
+      <p class="subtitle-text">Here you can find invoice details</p>
+    </div>
+
+    <div (click)="Edit(invoice.id)" class="buttons">
+      <div class="content">Edit Invoice</div>
+    </div>
+  </div>
+
+  <section>
+    <div class="product-details">
+      <div class="Description">
+
+          <div>
+          <h5>Invoice Id:</h5>
+          <h5 class="info">{{ invoice.id }}</h5>
+        </div>
+        <div>
+          <h5>Customer Name:</h5>
+          <h5 class="info">{{ invoice.customerName }}</h5>
+        </div>
+
+        <div>
+          <h5>Invoice Date:</h5>
+          <h5 class="info">{{ invoice.invoiceDate | date: 'short' }}</h5>
+        </div>
+
+        <div>
+          <h5>Total Price:</h5>
+          <h5 class="info">{{ invoice.totalPrice }} EGP</h5>
+        </div>
+
+        <div>
+          <h5>Cashier Name:</h5>
+          <h5 class="info">{{ invoice.cashierName }}</h5>
+        </div>
+
+        <div>
+          <h5>Branch Name:</h5>
+          <h5 class="info">{{ invoice.branchName }}</h5>
+        </div>
+
+       
+      </div>
+
+      <div class="sperator"></div>
+
+      <!-- Optional section if you want to add a logo or visual representation -->
+      <div class="Occasions">
+        
+          <h5>Items:</h5>
+          <div *ngFor="let item of invoice.items" class="info">
+            • {{ item.name }} (x{{ item.count }}) - {{ item.price }} EGP
+          </div>
+       
+      </div>
+    </div>
+  </section>
+</div>

@@ -18,7 +18,7 @@
         </div>
 
 
-        <div  (click)="Edit(Item.itemID)" class="  buttons">
+        <div  (click)="Edit(Item.id)" class="  buttons">
             <div class="  content" >Edit Item</div>
         </div>
 
@@ -34,24 +34,19 @@
        
 
             <div>
-                <h2>Name : </h2>
-                <h2 class="info"> {{Item.itemID}}</h2>
+                <h2>Id : </h2>
+                <h2 class="info"> {{Item.id}}</h2>
             </div>
             <div>
-                <h2>Branch:  </h2>
+                <h2>Name:  </h2>
                 <h2 class="info"> {{ Item.name}}</h2>
             </div>
             <div>
-                <h2>City : </h2>
+                <h2>Price : </h2>
                 <h2 class="info"> {{ Item.price}} </h2>
             </div>
     
  
-
-
-          
-
-
 
             </div>
             

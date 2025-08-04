@@ -1,6 +1,6 @@
 export class Item {
     constructor(
-       public itemID:number, 
+       public id:number, 
        public name:string, 
     public price:number, 
     ){
@@ -18,3 +18,6 @@ export class ItemForCreate {
 
     }
 }
+
+
+

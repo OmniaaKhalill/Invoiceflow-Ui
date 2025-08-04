@@ -8,11 +8,11 @@
         </div>
 <div>  / </div>
 
-        <div class="breadcrumbs-active">Add  Cashiers</div>
+        <div class="breadcrumbs-active">Edit  Cashiers</div>
       </div>
 
 
-      <p class="subtitle-text">Here you can add a Cashier</p>
+      <p class="subtitle-text">Here you can edit a Cashier</p>
     </div>
 
 
@@ -40,21 +40,34 @@
             </div>
 
         </div>
-              <div class="form-row">
-   
-            <div class="form-input">
-              <label for="branchID" class="input-label"> Branch</label>
-              <input type="number" id="branchID" [(ngModel)]="cashier.branchID" name="branchID" required #branchID="ngModel" />
-              <div class="error">
 
-            <div *ngIf="branchID.value <0 && branchID.touched" class="error-message">
-               branch id cant be 0
-              </div>
-              </div>
-            </div>
-          </div>
 
-     
+
+<div class="form-row">
+  <div class="form-input">
+    <label for="BranchId" class="input-label">Select Branch</label>
+    <select
+      id="BranchId"
+      [(ngModel)]="cashier.branchID"
+      name="BranchId"
+      
+      required
+      #BranchId="ngModel"
+    >
+
+      <option value="" disabled>Select Branch</option>
+      <option *ngFor="let Branch of branches" [value]="Branch.id">
+        {{ Branch.name }}
+      </option>
+    </select>
+
+    <div class="error">
+      <div *ngIf="BranchId.invalid && BranchId.touched" class="error-message">
+        Branch is required
+      </div>
+    </div>
+  </div>
+</div>
 
       </div>
         

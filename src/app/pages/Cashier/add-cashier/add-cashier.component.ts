@@ -5,6 +5,8 @@ import { SharedService } from '../../../core/services/Shared/shared.service';
 import { CashierService } from '../../../core/services/Cashier/cashier.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Branch } from '../../../core/models/Branch/branch';
+import { BranchService } from '../../../core/services/Branch/branch.service';
 
 @Component({
   selector: 'app-add-cashier',
@@ -16,6 +18,7 @@ import { CommonModule } from '@angular/common';
 export class AddCashierComponent {
 
  cashier!: CashierForCreate;
+ branches!:Branch[]
 
 
   isPhoto=false
@@ -27,13 +30,21 @@ export class AddCashierComponent {
   constructor(
     private router: Router,
     private cashierService: CashierService,
-    private sharedService:SharedService 
+    private sharedService:SharedService ,
+    private branchservice: BranchService
   ) {}
 
   ngOnInit(): void {
 
     this.cashier = new CashierForCreate("", 0)
-
+      this.branchservice.GetAll().subscribe(data => {
+        console.log(data)
+        this.branches = data;
+  
+  
+      }, error => {
+        console.error('Error: ', error);
+      });
 
   }
 

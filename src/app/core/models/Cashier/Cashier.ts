@@ -1,6 +1,6 @@
 export class Cashier {
     constructor(
-        public cashierID:number, 
+        public id:number, 
         public cashierName:string, 
         public branchName:string, 
         public cityName:string, 
@@ -20,15 +20,17 @@ export class CashierForCreate {
 
 export class CashierForUpdate {
     constructor(
-    public cashierID:number, 
+    public id:number, 
        public cashierName:string, 
-        public branchID:number, 
+        public branchID:number,
+  public branchName:string,
+ 
        
     ){}
 }
 export class CashierDtails {
     constructor(
-        public cashierID:number, 
+        public id:number, 
         public cashierName:string, 
         public branchID:number, 
         public branchName:string,

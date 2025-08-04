@@ -294,9 +294,7 @@ max-height: 80vh;
   }
 
 
-  .table-row-odd ,.table-row-even{
-/* padding: 1rem; */
-  }
+
 .table-head{
 border-radius: 10px 10px 0 0;
 }
@@ -330,6 +328,7 @@ border-radius: 10px 10px 0 0;
     align-items: center;
 
    width: 7%;
+   justify-content: center;
 
   }
 
@@ -338,6 +337,7 @@ border-radius: 10px 10px 0 0;
     width: 10%;
     align-items: center;
     background-color:inherit;
+  justify-content: center;
 
   }
 
@@ -346,7 +346,8 @@ border-radius: 10px 10px 0 0;
     width: 15%;
     align-items: center;
     background-color:inherit;
-   
+     justify-content: center;
+
    
   }
 

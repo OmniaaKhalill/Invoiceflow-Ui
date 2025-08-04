@@ -33,7 +33,7 @@
 
 
             <div class="table-col-s">
-              <div class="t-row-text" title="{{entity.cashierID}}">{{entity.cashierID}}</div>
+              <div class="t-row-text" title="{{entity.id}}">{{entity.id}}</div>
             </div>
 
 
@@ -52,9 +52,9 @@
             </div>
       
             <div class="table-col-l">
-              <img (click)="Details(entity.cashierID)" class="icon-info pointer" src="../../../../assets/common/info.svg" alt="">
-              <img class="icon pointer" (click)="Edit(entity.cashierID)" src="../../../../assets/common/edit-05.svg" alt="">
-              <img (click)="showConfirmPopup(entity.cashierID)" class="icon pointer" src="../../../../assets/common/trash-03.svg" alt="">
+              <img (click)="Details(entity.id)" class="icon-info pointer" src="../../../../assets/common/info.svg" alt="">
+              <img class="icon pointer" (click)="Edit(entity.id)" src="../../../../assets/common/edit-05.svg" alt="">
+              <img (click)="showConfirmPopup(entity.id)" class="icon pointer" src="../../../../assets/common/trash-03.svg" alt="">
             </div>
           </div>
           
